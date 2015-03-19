@@ -1,26 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="31">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" nextobjectid="7">
  <tileset firstgid="1" name="block" tilewidth="32" tileheight="32">
-  <image source="block.png" width="40" height="40"/>
+  <image source="block.png" width="32" height="32"/>
   <tile id="0">
    <properties>
     <property name="isWall" value="true"/>
    </properties>
   </tile>
  </tileset>
- <layer name="块层 1" width="30" height="20">
-  <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20JT6AAAHgaCWAAAQ==
-  </data>
- </layer>
  <layer name="wall" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJzllEEKwDAIBPX/n+41FHVckfaQhUAj6hht4mbmP60NUR5/fXf8JzVWvnT+aN/NofaZOBFX1QZ3UgvNLOo52c647vyI27GRb8atfCfcLC6KyXqjcjObcie78zjzTvs85RJLna/61m78V6qons47qZyPZks1VVJjtriq6K5+uW7TA13oANU=
+   eJzFk1EOwCAIQ/H+l97v0lAojCGJcRroE+2OmZ1LYzumuFkvuMfWyr1E581yWb/KHahcph9xKz39wX3P6l7E8GoyLubgN+NW/NLhel5F/S4Xa7e4GBWul6Nws7fK1h2uEuq/3/Wi6tMNrqcf6bLcr6F6IKpXtFVNVqP6t/oGVR9MR9evE+MBkdABBg==
   </data>
  </layer>
- <objectgroup name="对象层 1">
-  <object id="21" x="530" y="272" visible="0"/>
-  <object id="24" name="end" x="528" y="272"/>
-  <object id="30" name="start" x="897" y="516" width="28" height="26"/>
+ <objectgroup name="object">
+  <object id="1" name="player" x="451.003" y="322.993" width="25" height="26" rotation="0.0312333"/>
+  <object id="2" name="monster2" x="898" y="577" width="27" height="26"/>
+  <object id="4" name="monster1" x="33" y="35" width="28" height="27"/>
  </objectgroup>
 </map>
