@@ -34,7 +34,7 @@ bool GameScene::init()
 bool wall[30][20];
 void GameScene::initMap()
 {
-	map = CCTMXTiledMap::create("map.tmx");
+	map = CCTMXTiledMap::create("test.tmx");
 	this->addChild(map,0);
 
 	//³õÊ¼»¯ÕÏ°­Îï
