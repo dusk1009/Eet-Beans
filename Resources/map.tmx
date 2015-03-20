@@ -8,6 +8,9 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="2" name="bean" tilewidth="32" tileheight="32">
+  <image source="bean.png" width="32" height="32"/>
+ </tileset>
  <layer name="wall" width="30" height="20">
   <data encoding="base64" compression="zlib">
    eJzFVNEOACEI0v//6Xt3AmLXYmvrLAW8KiMiHw0Etqag6maZ11i3NvGh6tZ9N8F4mT7Xr+pBjSGdjqcu1vF2e1zfLK9yKL/q28mZnCukZ/KPJjXdHAZH+4Z3Mnd5Wc7mzUA1/+hvhXOukKZX9wjFENx348Sn65v14gYQr9K3PdOoF0rfBqruq/EBiVMBLQ==
@@ -18,4 +21,9 @@
   <object id="2" name="monster2" x="898" y="577" width="27" height="26"/>
   <object id="4" name="monster1" x="33" y="35" width="28" height="27"/>
  </objectgroup>
+ <layer name="bean" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzNU9sKQCEIi/7/o8/7mNtMoiMIlbfpbK13sgtVNqcu74IzvjFb0ofLi343VdVV+FJJ54dvE55VPKtbzUL1kPgwLMxW4Uj6cXfElvqmHCU5uzEdbieYWU4WN63rOHEy5ejkD53s1d/+UbdnFY/Ypn0mMele3dCqrsOXSjq/DlcTnnGvXsgH/G4CVQ==
+  </data>
+ </layer>
 </map>

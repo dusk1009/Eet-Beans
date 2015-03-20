@@ -36,7 +36,7 @@ void OverScene::showScore(int score)
 {
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	//ÏÔÊ¾µÃ·Ö
-	CCLabelTTF *scoreLab = CCLabelTTF::create(CCString::createWithFormat("Your Score : %d", score)->getCString(), "Arial", 60);
+	CCLabelTTF *scoreLab = CCLabelTTF::create(CCString::createWithFormat("%d bean(s) remain", score)->getCString(), "Arial", 60);
 	scoreLab->setPosition(ccp(visibleSize.width / 2, visibleSize.height / 2 + 100));
 	this->addChild(scoreLab);
 }

@@ -45,7 +45,7 @@ bool GameScene::initMap()
 	//初始化障碍物
 	CCTMXLayer *wallLayer = map->layerNamed("wall");
 	CCSize mapSize = map->getMapSize();
-	memset(wall, 0, sizeof(wall));
+	memset(wall, false, sizeof(wall));
 	for (int i = 0; i < mapSize.width; i++)
 		for (int j = 0; j < mapSize.height; j++)
 		{
@@ -54,9 +54,24 @@ bool GameScene::initMap()
 				wall[i][j] = true;
 			}
 		}
+	//初始化豆子
+	beanLayer = map->layerNamed("bean");
+	beanCount = 0;
+	memset(bean, false, sizeof(bean));
+	for (int i = 0; i < mapSize.width; i++)
+		for (int j = 0; j < mapSize.height; j++)
+		{
+			if (beanLayer->tileAt(ccp(i, j)))
+			{
+				bean[i][j] = true;
+				++beanCount;
+			}
+		}
 	//初始化玩家和怪物
 	objGroup = map->objectGroupNamed("object");
 	initPlayer();
+	monsterArray = CCArray::create();
+	monsterArray->retain();
 	initMonster(ccp(1,1));
 	initMonster(ccp(28, 18));
 	
@@ -85,6 +100,7 @@ bool GameScene::initMonster(CCPoint tilePos)
 	monster->setAnchorPoint(ccp(0, 0));
 	monster->setPosition(TransPos::transTilePosToCPos(tilePos));
 	this->addChild(monster, 1);
+	monsterArray->addObject(monster);
 	moveEnd(monster);
 	return true;
 }
@@ -132,9 +148,6 @@ void GameScene::moveEnd(CCNode *sprite)
 		CCSequence *sequence = CCSequence::create(move, callFunc, NULL);
 		sprite->runAction(sequence);
 	}
-	else
-		CCDirector::sharedDirector()->replaceScene(OverScene::scene(0));
-
 }
 
 //void GameScene::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
@@ -153,4 +166,23 @@ void GameScene::moveEnd(CCNode *sprite)
 void GameScene::update(float delta)
 {
 	endPos = TransPos::transCPosToTilePos(player->getPosition());
+	int x = endPos.x;
+	int y = endPos.y;
+	if (bean[x][y])
+	{
+		bean[x][y] = false;
+		beanLayer->removeTileAt(ccp(x, y));
+		--beanCount;
+	}
+	if (!beanCount)
+	{
+		CCDirector::sharedDirector()->replaceScene(OverScene::scene(beanCount));
+	}
+	for (int i = 0; i < monsterArray->count(); i++)
+	{
+		CCPoint pos = ((CCSprite*)monsterArray->objectAtIndex(i))->getPosition();
+		pos = TransPos::transCPosToTilePos(pos);
+		if (pos.equals(endPos))
+			CCDirector::sharedDirector()->replaceScene(OverScene::scene(beanCount));
+	}
 }

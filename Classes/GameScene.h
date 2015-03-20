@@ -39,15 +39,16 @@ private:
 	static void* monster1Thread(void* p);
 	static void* monster2Thread(void* p);
 
-	pthread_t monster1Pid, monster2Pid;
+	//pthread_t monster1Pid, monster2Pid;
 	Player* player;
 	CCSprite *monster1,*monster2;
 	CCTMXTiledMap *map;
 	CCTMXObjectGroup *objGroup;
 	CCPoint startPos, endPos;
-
-	//玩家地图位置
-	static int destX, destY;
+	CCArray *monsterArray;
+	CCTMXLayer *beanLayer;
+	int beanCount;//剩余豆子数
+	int bean[30][20];
 };
 extern bool wall[][20];
 extern CCSize tileSize;
