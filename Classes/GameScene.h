@@ -2,6 +2,8 @@
 #define __GAME_SCENE_H__
 
 #include "cocos2d.h"
+#include "Player.h"
+#include "pthread\pthread.h"
 USING_NS_CC;
 
 class GameScene : public cocos2d::CCLayer
@@ -19,25 +21,36 @@ public:
     CREATE_FUNC(GameScene);
 
 private:
-	virtual void ccTouchesBegan(CCSet *pTouches,CCEvent *pEvent);
+	virtual void update(float delta);
+	//virtual void ccTouchesBegan(CCSet *pTouches,CCEvent *pEvent);
 	bool initMenu();
-	void initMap();
+	bool initMap();
+	bool initPlayer();
+	bool initMonster(CCPoint tilePos);
 	void menuStartCallback(CCObject* pSender);
-	void moveEnd();
+	void moveEnd(CCNode *sprite);
 	CCPoint transTilePosToCPos(CCPoint tilePos);
 	CCPoint transCPosToTilePos(CCPoint cPos);
-	CCPoint getPosByName(CCTMXObjectGroup *objGroup,char* name);
+	static CCPoint getPosByName(CCTMXObjectGroup *objGroup,char* name);
 	/*bool initPlayer();
 	bool createScoreLab();
 	bool createBullet();
 	bool createLadder(CCPoint pos);*/
+	static void* monster1Thread(void* p);
+	static void* monster2Thread(void* p);
 
-
-	CCSize visibleSize;
-	CCSprite *player,*monster1,*monster2;
+	pthread_t monster1Pid, monster2Pid;
+	Player* player;
+	CCSprite *monster1,*monster2;
 	CCTMXTiledMap *map;
+	CCTMXObjectGroup *objGroup;
 	CCPoint startPos, endPos;
+
+	//Íæ¼ÒµØÍ¼Î»ÖÃ
+	static int destX, destY;
 };
 extern bool wall[][20];
+extern CCSize tileSize;
+extern CCSize visibleSize;
 
 #endif
