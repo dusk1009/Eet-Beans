@@ -37,7 +37,7 @@ AStarNode* AStar::getFirstStep()
 	AStarNode *p = openList[0];
 	while (p->parent->parent)
 	{
-		CCLOG("%f,%f", p->pos.x, p->pos.y);
+		//CCLOG("%f,%f", p->pos.x, p->pos.y);
 		p = p->parent;
 	}
 	return p;

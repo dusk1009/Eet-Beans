@@ -1,5 +1,5 @@
 #include "OverScene.h"
-#include "GameScene.h"
+#include "StartScene.h"
 using namespace cocos2d;
 
 CCScene* OverScene::scene(int score)
@@ -14,7 +14,7 @@ CCScene* OverScene::scene(int score)
 bool OverScene::init()
 {
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-
+	
 	//ÖØ¿ª°´Å¥
 	CCLabelTTF *restartLabel = CCLabelTTF::create("Restart", "Arial", 50);
 	CCMenuItemLabel *startMenu = CCMenuItemLabel::create(restartLabel, this, menu_selector(OverScene::restart));
@@ -29,7 +29,7 @@ bool OverScene::init()
 
 void OverScene::restart(CCObject* pSender)
 {
-	CCDirector::sharedDirector()->replaceScene(GameScene::scene());
+	CCDirector::sharedDirector()->replaceScene(StartScene::scene());
 }
 
 void OverScene::showScore(int score)

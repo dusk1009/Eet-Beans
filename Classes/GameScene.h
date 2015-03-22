@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "Player.h"
-#include "pthread\pthread.h"
+//#include "pthread\pthread.h"
 USING_NS_CC;
 
 class GameScene : public cocos2d::CCLayer

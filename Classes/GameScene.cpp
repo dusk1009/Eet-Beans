@@ -1,8 +1,10 @@
 #include "GameScene.h"
+#include "StartScene.h"
 #include "OverScene.h"
 #include "AStar.h"
 #include "MoveController.h"
 #include "TransPos.h"
+#include "Joystick.h"
 USING_NS_CC;
 
 bool wall[30][20];
@@ -86,9 +88,26 @@ bool GameScene::initPlayer()
 	player->setPosition(getPosByName(objGroup, "player"));
 	this->addChild(player, 1);
 	//为玩家添加控制器
-	MoveController *controllerLayer = MoveController::create();
-	controllerLayer->setControlListener(player);
-	this->addChild(controllerLayer);
+	switch (controlType)
+	{
+		case JOYSTICK://摇杆方式控制
+		{
+			Joystick *joystick = Joystick::create("Joystick_bg.png", "Joystick_stick.png");
+			joystick->setPosition(ccp(80, 80));
+			joystick->setListener(player);
+			this->addChild(joystick);
+			break;
+		}
+		case BUTTON: //方向键方式控制
+		{
+			
+			MoveController *controllerLayer = MoveController::create();
+			controllerLayer->setControlListener(player);
+			this->addChild(controllerLayer);
+			break;
+		}
+	}
+	
 	//初始化怪物终点
 	endPos = TransPos::transCPosToTilePos(player->getPosition());
 	return true;
