@@ -4,10 +4,10 @@
 
 #define PI 3.1415926
 
-Joystick* Joystick::create(const char* bgFileName, const char* stickFileName)
+Joystick* Joystick::create(const char* bgFileName, const char* stickFileName, float scale)
 {
 	Joystick *joystick = new Joystick();
-	if (joystick && joystick->init(bgFileName, stickFileName))
+	if (joystick && joystick->init(bgFileName, stickFileName, scale))
 	{
 		joystick->autorelease();
 		return joystick;
@@ -17,14 +17,15 @@ Joystick* Joystick::create(const char* bgFileName, const char* stickFileName)
 	return NULL;
 }
 
-bool Joystick::init(const char* bgFileName, const char* stickFileName)
+bool Joystick::init(const char* bgFileName, const char* stickFileName, float scale)
 {
 	m_bg = CCSprite::create(bgFileName);
-	m_bgRadius = m_bg->getContentSize().width / 2;
-	//m_bg->setPosition(ccp(m_bgRadius + 10, m_bgRadius + 10));
+	m_bg->setScale(scale);
+	m_bgRadius = scale * m_bg->getContentSize().width / 2;
 	this->addChild(m_bg);
 	m_stick = CCSprite::create(stickFileName);
-	m_stickRadius = m_stick->getContentSize().width / 2;
+	m_stick->setScale(scale);
+	m_stickRadius = scale * m_stick->getContentSize().width / 2;
 	//m_stick->setPosition(ccp(m_bgRadius + 10, m_bgRadius + 10));
 	this->addChild(m_stick);
 

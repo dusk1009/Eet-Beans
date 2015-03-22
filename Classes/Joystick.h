@@ -8,8 +8,8 @@ class Joystick : public CCNode, public CCTargetedTouchDelegate
 {
 public:
 	Joystick() : m_isMoving(false), m_isTouching(false){};
-	static Joystick* create(const char* bgFileName, const char* stickFileName);
-	bool init(const char* bgFileName, const char* stickFileName);
+	static Joystick* create(const char* bgFileName, const char* stickFileName, float scale);
+	bool init(const char* bgFileName, const char* stickFileName, float scale);
 
 	virtual void update(float delta);
 

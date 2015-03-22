@@ -92,8 +92,8 @@ bool GameScene::initPlayer()
 	{
 		case JOYSTICK://Ò¡¸Ë·½Ê½¿ØÖÆ
 		{
-			Joystick *joystick = Joystick::create("Joystick_bg.png", "Joystick_stick.png");
-			joystick->setPosition(ccp(80, 80));
+			Joystick *joystick = Joystick::create("Joystick_bg.png", "Joystick_stick.png",2.0f);
+			joystick->setPosition(ccp(100, 100));
 			joystick->setListener(player);
 			this->addChild(joystick);
 			break;
@@ -102,6 +102,7 @@ bool GameScene::initPlayer()
 		{
 			
 			MoveController *controllerLayer = MoveController::create();
+			controllerLayer->setPosition(ccp(150, 100));
 			controllerLayer->setControlListener(player);
 			this->addChild(controllerLayer);
 			break;

@@ -17,32 +17,32 @@ bool MoveController::initMenu()
 	CCControlButton *upButton = CCControlButton::create(upNormal);
 	upButton->addTargetWithActionForControlEvents(this, cccontrol_selector(MoveController::upButtonDown), CCControlEventTouchDown);
 	upButton->addTargetWithActionForControlEvents(this, cccontrol_selector(MoveController::buttonUp), CCControlEventTouchUpInside);
-	upButton->setPreferredSize(CCSize(50, 50));
-	upButton->setPosition(ccp(100, 100));
+	upButton->setPreferredSize(CCSize(100, 100));
+	upButton->setPosition(ccp(0, 100));
 	this->addChild(upButton, 1);
 	
 	CCScale9Sprite *downNormal = CCScale9Sprite::create("UpNormal.png");
 	CCControlButton *downButton = CCControlButton::create(downNormal);
 	downButton->addTargetWithActionForControlEvents(this, cccontrol_selector(MoveController::downButtonDown), CCControlEventTouchDown);
 	downButton->addTargetWithActionForControlEvents(this, cccontrol_selector(MoveController::buttonUp), CCControlEventTouchUpInside);
-	downButton->setPreferredSize(CCSize(50, 50));
-	downButton->setPosition(ccp(100, 50));
+	downButton->setPreferredSize(CCSize(100, 100));
+	downButton->setPosition(ccp(0, 0));
 	this->addChild(downButton, 1);
 	
 	CCScale9Sprite *leftNormal = CCScale9Sprite::create("UpNormal.png");
 	CCControlButton *leftButton = CCControlButton::create(leftNormal);
 	leftButton->addTargetWithActionForControlEvents(this, cccontrol_selector(MoveController::leftButtonDown), CCControlEventTouchDown);
 	leftButton->addTargetWithActionForControlEvents(this, cccontrol_selector(MoveController::buttonUp), CCControlEventTouchUpInside);
-	leftButton->setPreferredSize(CCSize(50, 50));
-	leftButton->setPosition(ccp(50, 75));
+	leftButton->setPreferredSize(CCSize(100, 100));
+	leftButton->setPosition(ccp(-100, 0));
 	this->addChild(leftButton, 1);
 	
 	CCScale9Sprite *rightNormal = CCScale9Sprite::create("UpNormal.png");
 	CCControlButton *rightButton = CCControlButton::create(rightNormal);
 	rightButton->addTargetWithActionForControlEvents(this, cccontrol_selector(MoveController::rightButtonDown), CCControlEventTouchDown);
 	rightButton->addTargetWithActionForControlEvents(this, cccontrol_selector(MoveController::buttonUp), CCControlEventTouchUpInside);
-	rightButton->setPreferredSize(CCSize(50, 50));
-	rightButton->setPosition(ccp(150, 75));
+	rightButton->setPreferredSize(CCSize(100, 100));
+	rightButton->setPosition(ccp(100, 0));
 	this->addChild(rightButton, 1);
 	
 	return true;
