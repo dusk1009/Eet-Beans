@@ -4,7 +4,7 @@
 
 USING_NS_CC;
 
-class Joystick : public CCNode, public CCTargetedTouchDelegate
+class Joystick : public Controller
 {
 public:
 	Joystick() : m_isMoving(false), m_isTouching(false){};
@@ -20,7 +20,7 @@ public:
 	virtual void ccTouchEnded(CCTouch *touch, CCEvent *event);
 	virtual void ccTouchCancelled(CCTouch *touch, CCEvent *event);
 
-	void setListener(CCSprite* listener);
+	//void setListener(CCSprite* listener);
 	void judgeDirection(CCPoint pos);
 	void moveEnd();
 

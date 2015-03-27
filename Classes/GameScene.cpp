@@ -76,6 +76,8 @@ bool GameScene::initMap()
 	monsterArray->retain();
 	initMonster(ccp(1,1));
 	initMonster(ccp(28, 18));
+	initMonster(ccp(1, 18));
+	//initMonster(ccp(28, 1));
 	
 
 	return true;
@@ -94,7 +96,7 @@ bool GameScene::initPlayer()
 		{
 			Joystick *joystick = Joystick::create("Joystick_bg.png", "Joystick_stick.png",2.0f);
 			joystick->setPosition(ccp(100, 100));
-			joystick->setListener(player);
+			joystick->setControlListener(player);
 			this->addChild(joystick);
 			break;
 		}

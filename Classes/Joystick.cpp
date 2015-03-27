@@ -34,10 +34,10 @@ bool Joystick::init(const char* bgFileName, const char* stickFileName, float sca
 	return true;
 }
 
-void Joystick::setListener(CCSprite* listener)
-{
-	this->m_listener = listener;
-}
+//void Joystick::setListener(CCSprite* listener)
+//{
+//	this->m_controlListener = listener;
+//}
 
 void Joystick::onEnter()
 {
@@ -117,14 +117,14 @@ void Joystick::update(float delta)
 {
 	if (!m_isMoving && m_isTouching)
 	{
-		CCPoint tilePos = TransPos::transCPosToTilePos(m_listener->getPosition() + m_direction*tileSize.width);
+		CCPoint tilePos = TransPos::transCPosToTilePos(m_controlListener->getPosition() + m_direction*tileSize.width);
 		if (!wall[int(tilePos.x)][int(tilePos.y)])
 		{
 			m_isMoving = true;
 			CCMoveBy *move = CCMoveBy::create(0.1f, m_direction*tileSize.width);
 			CCCallFunc *callFunc = CCCallFunc::create(this, callfunc_selector(Joystick::moveEnd));
 			CCSequence *sequence = CCSequence::create(move, callFunc, NULL);
-			m_listener->runAction(sequence);
+			m_controlListener->runAction(sequence);
 		}
 	}
 }
